@@ -6,12 +6,13 @@ var logger = require('morgan');
 var cors=require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var contentsRouter=require('./routes/contents');
 var app = express();
 var favicon = require('serve-favicon');
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 
 
-출처: https://apple77y.tistory.com/29 [IT일상]
+//출처: https://apple77y.tistory.com/29 [IT일상]
 
 app.use(cors({origin:"*"}));
 
@@ -28,7 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use('/contents',contentsRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 

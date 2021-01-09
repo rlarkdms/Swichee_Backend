@@ -90,15 +90,27 @@ router.get('/api/recommend', function(req, res, next) {
 
 }); 
 
+
 /*댓글*/
   router.get('/api/comment', function(req, res, next) {
   var c_id = req.param('id');
-  
+
   connection.query(
-    'select User.image,User.User_name,User.blue,Comment.*,Recomment.* from User INNER JOIN Comment ON User.User_id = Comment.Contents_User_id INNER JOIN Recomment on Comment.Contents_User_id = Recomment.Comment_Contents_User_id  where Comment.Contents_id ='+c_id,
+  ' select User.User_name,User.image,User.Blue, Contents.Contents_id, Comment.* from Comment INNER JOIN User on User.User_id = Comment.User_id INNER JOIN Contents ON Contents.Contents_id = Comment.Contents_id where Contents.Contents_id = '+c_id ,
     (err, rows, fields) => {
     res.send(rows);})
-}); 
+});
+
+
+/*대댓글*/
+  router.get('/api/recomment', function(req, res, next) {
+  var c_id = req.param('id');
+ 
+  connection.query(
+  ' select Recomment.* , User.User_name, User.image, Contents.Contents_id from Recomment INNER JOIN User on User.User_id = Recomment.User_id INNER JOIN Contents ON  Contents.Contents_id = Recomment.Comment_Contents_id where Contents.Contents_id = '+c_id,
+    (err, rows, fields) => {
+    res.send(rows);})
+});
 
 
 inf_a=0;
@@ -106,9 +118,11 @@ inf_a=0;
   router.get('/', function(req, res, next) {
 /*  res.render('index', { title: 'Express' });*/
  
-inf_a = 0;
+ inf_a = 0;
   connection.query(
-  'Select count(Contents.Contents_id),Contents.Date,User.image,Contents.Likes,Contents.Contents_id,Contents.Views,Contents.type_id,Contents.Thumbnail,Contents.Category,Contents.Title,User.User_name,User.blue from User INNER JOIN Contents ON User.User_id=Contents.User_id group by Contents.Contents_id ORDER BY Contents.Contents_id DESC limit'inf_a+','+5,
+//  'Select count(Contents.Contents_id),Contents.Date,User.image,Contents.Likes,Contents.Contents_id,Contents.Views,Contents.type_id,Contents.Thumbnail,Contents.Category,Contents.Title,User.User_name,User.blue from User INNER JOIN Contents ON User.User_id=Contents.User_id group by Contents.Contents_id ORDER BY Contents.Contents_id DESC limit 0,5',
+'Select Contents.comment_count,Contents.Date,User.image,Contents.Likes,Contents.Contents_id,Contents.Views,Contents.type_id,Contents.Thumbnail,Contents.Category,Contents.Title,User.User_name,User.blue from User INNER JOIN Contents ON User.User_id=Contents.User_id ORDER BY Contents.Contents_id DESC limit 0,5',
+
 
   (err, rows, fields) => {
   res.send(rows);
@@ -119,13 +133,41 @@ inf_a = 0;
 router.get('/api/inf', function(req, res, next) {
  inf_a+=5;
 connection.query(
-  'Select Contents.Date,User.image,Contents.Likes,Contents.Contents_id,Contents.Views,Contents.type_id,Contents.Thumbnail,Contents.Category,Contents.Title,User.User_name,User.blue from User INNER JOIN Contents ON User.User_id=Contents.User_id group by Contents.Contents_id ORDER BY Contents.Contents_id DESC limit '+inf_a+','+5,
+  'Select Contents.comment_count,Contents.Date,User.image,Contents.Likes,Contents.Contents_id,Contents.Views,Contents.type_id,Contents.Thumbnail,Contents.Category,Contents.Title,User.User_name,User.blue from User INNER JOIN Contents ON User.User_id=Contents.User_id ORDER BY Contents.Contents_id DESC limit '+inf_a+','+5,
   (err, rows, fields) => {
   res.send(rows);
 
   })
 
 });
+
+router.get('/api/trending', function(req, res, next) {
+
+connection.query(
+  'Select Contents.Date,User.image,Contents.Likes,Contents.Contents_id,Contents.Views,Contents.type_id,Contents.Thumbnail,Contents.Category,Contents.Title,User.User_name,User.blue from User INNER JOIN Contents ON User.User_id=Contents.User_id ORDER BY Contents.Likes DESC limit 12',
+(err, rows, fields) => {
+  res.send(rows);
+
+  })
+
+});
+
+router.get('/api/sidebar', function(req, res, next) {
+ inf_a = 0;
+var ca = req.param('category');
+
+connection.query(
+'Select count(Contents.Contents_id),Contents.Date,User.image,Contents.Likes,Contents.Contents_id,Contents.Views,Contents.type_id,Contents.Thumbnail,Contents.Category,Contents.Title,User.User_name,User.blue from User INNER JOIN Contents ON User.User_id=Contents.User_id where Contents.Category like "%'+ca+'%" group by Contents.Contents_id ORDER BY Contents.Contents_id DESC limit '+inf_a+','+5,
+(err, rows, fields) => {
+  res.send(rows);
+
+  })
+
+});
+
+
+
+
 
 router.get('/test', function(req, res, next) {
 
