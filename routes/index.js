@@ -1,7 +1,7 @@
 var express = require('express'); 
 var router = express.Router(); 
 const mysql = require('mysql'); 
-
+var fs = require('fs');
 
 
 var connection = 
@@ -20,6 +20,7 @@ connection.connect()
   res.send(rows);
   })
 });
+/* contents.js 로 이동
 router.get('/api/posting', function(req, res,next) {
 
 var C_id =req.param('id');
@@ -62,7 +63,7 @@ connection.query(
 else  res.send('잘못된 type_id');
 
 });
-
+*/
  router.get('/api/add', function(req, res,next) {
 
 var C_id =req.param('id');
@@ -168,18 +169,13 @@ connection.query(
 
 
 
-
+/*
 router.get('/test', function(req, res, next) {
+fs.createReadStream('https://kok5417.s3.amazonaws.com/Two-cats-look-at-laptop-screen-funny-animals_1920x1080.jpg').pipe(fs.createWriteStream('newLog.jpg'));
+res.send('<img src= "newLog.jpg"/>');
+ 
 
-connection.query(
-  'Select  Contents.comment_count  from Contents INNER JOIN Comment ON Comment.Contents_id = Contents.Contents_id where Contents.Contents_id=1',
-//'select count(Comment.Comment_id) from Comment' ,
-(err, rows, fields) => {
-  res.send(rows);
-
-  })
-
-});
+});*/
 
 module.exports = router;
 
