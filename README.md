@@ -11,7 +11,7 @@
 - 홈화면 댓글contents table 컬럼 댓글개수 추가
 - Trending 추가(today_views 증가, cronjob 한시간마다 today_views 0으로 Set)<br>->1시간 동안의 조회수로 인기TOP 12 선정 후 데이터 전송.
 - 대댓글 완료
-- 사이드바 완료
+- 사이드바 완료<br>
 <b>[구현된 홈화면]</b>
 ![web_home](https://user-images.githubusercontent.com/31676033/104091185-2f41ba80-52bf-11eb-8120-f79e630cf744.png)
 
