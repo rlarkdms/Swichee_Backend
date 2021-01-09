@@ -6,21 +6,28 @@ var logger = require('morgan');
 var cors=require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
 var app = express();
+var favicon = require('serve-favicon');
+app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
+
+
+출처: https://apple77y.tistory.com/29 [IT일상]
 
 app.use(cors({origin:"*"}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 //set Port
 app.set('port', process.env.PORT || 9000);
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
