@@ -1,9 +1,9 @@
-# 스위치 웹애플리케이션 프로젝트<br>제작 기간: 2020.12.24~2021.01.17
+# 스위치 웹애플리케이션 프로젝트<br>제작 기간 - 2020.12.24~2021.01.17
  
 ### swichee Backend 레포입니다.(김가은👧🏻,김윤직🧑🏻)
-
-### EC2환경에서 제작 / 이미지 서버로 S3 사용 / Domain Route53 이용<br> 백언어 node.js(express 이용) 프로트언어 react,CSS <br> 협업 관리 git 
 ### swichee Frontend 레포 👉🏻 https://github.com/rovin0805/Swichee_Frontend.git
+### EC2환경에서 제작 / 이미지 서버로 S3 사용 / Domain Route53 이용<br> 백언어 node.js(express 이용) 프로트언어 react,CSS 협업 관리 git 
+
 
 
 ### 🎅💦21.01.09
