@@ -2,7 +2,7 @@
  
 ### swichee Backend 레포입니다.(김가은👧🏻,김윤직🧑🏻)
 ### swichee Frontend 레포 👉🏻 https://github.com/rovin0805/Swichee_Frontend.git
-### EC2환경에서 제작 / 이미지 서버로 S3 사용 / Domain Route53 이용<br> 백언어 node.js(express 이용) 프로트언어 react,CSS 협업 관리 git 
+### EC2환경에서 제작 / 이미지 서버로 S3 사용 / Domain Route53 이용<br> 백언어 node.js(express 이용) / 프로트언어 react,CSS / 협업 관리 git 
 
 
 
