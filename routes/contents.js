@@ -26,7 +26,7 @@ var t_id=req.param('type_id');
   if(t_id==1){
  connection.query(
 // 'select User.*, Contents.*, Image.* from Contents INNER JOIN User on User.User_id=Contents.User_id INNER JOIN Image ON Image.Contents_id = Contents.Contents_id where Contents.Contents_id= '+C_id+' and Contents.type_id = ' +t_id,
-'Select Image.Image_blur,GROUP_CONCAT(Image.Image SEPARATOR \',\'),Contents.Contents,Contents.Date,User.image,Contents.Likes,Contents.Contents_id,Contents.Views,Contents.Category,Contents.Title,User.User_name,User.Blue from User INNER JOIN Contents ON User.User_id=Contents.User_id INNER JOIN Image ON Contents.Contents_id=Image.Contents_id where Contents.Contents_id='+C_id+' and Contents.type_id='+t_id,
+'Select Image.Image_blur,GROUP_CONCAT(Image.Image SEPARATOR \',\'),Contents.comment_count,Contents.Contents,Contents.Date,User.image,Contents.Likes,Contents.Contents_id,Contents.Views,Contents.Category,Contents.Title,User.User_name,User.Blue from User INNER JOIN Contents ON User.User_id=Contents.User_id INNER JOIN Image ON Contents.Contents_id=Image.Contents_id where Contents.Contents_id='+C_id+' and Contents.type_id='+t_id,
 //'Select Image.Image_blur,GROUP_CONCAT(Image.Image SEPARATOR ','),Contents.Date,User.image,Contents.Likes,Contents.Contents_id,Contents.Views,Contents.Category,Contents.Title,User.User_name,User.blue from User INNER JOIN Contents ON User.User_id=Contents.User_id INNER JOIN Image ON Contents.Contents_id=Image.Contents_id where Contents.Contents_id=1 and Contents.type_id=1',
 
   (err, rows, fields) => {
@@ -72,7 +72,7 @@ router.get('/trending', (req, res) => {
   })
 });
 
- router.get('/popularity', function(req, res,next) {
+ router.get('/today_views', function(req, res,next) {
 
 var C_id =req.param('id');
   connection.query(

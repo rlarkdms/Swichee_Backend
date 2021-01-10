@@ -1,7 +1,6 @@
 var express = require('express'); 
 var router = express.Router(); 
 const mysql = require('mysql'); 
-var fs = require('fs');
 
 
 var connection = 
@@ -83,9 +82,9 @@ var C_id =req.param('id');
 router.get('/api/recommend', function(req, res, next) {
  /*  & >  %26  */
   var ca = req.param('category');
- 
+  var c_id =req.param('id'); 
   connection.query(
-    'Select Contents.Contents_id, Contents.Contents,Contents.Price,Contents.Category,Contents.Date,Contents.Views,Contents.type_id,Contents.Thumbnail,Contents.Likes,Contents.Category,Contents.Title,User.User_name from Contents  INNER JOIN User ON User.User_id=Contents.User_id where Category like "%'+ca+'%"ORDER BY Contents.Contents_id DESC limit 10' ,
+    'Select Contents.Contents_id, Contents.Contents,Contents.Price,Contents.Category,Contents.Date,Contents.Views,Contents.type_id,Contents.Thumbnail,Contents.Likes,Contents.Category,Contents.Title,User.User_name,User.Blue from Contents  INNER JOIN User ON User.User_id=Contents.User_id where not Contents.Contents_id ='+c_id+' and Category like "%'+ca+'%"ORDER BY Contents.Contents_id DESC limit 10' ,
     (err, rows, fields) => {
     res.send(rows);})
 
@@ -141,7 +140,7 @@ connection.query(
   })
 
 });
-
+/*
 router.get('/api/trending', function(req, res, next) {
 
 connection.query(
@@ -152,6 +151,7 @@ connection.query(
   })
 
 });
+*/
 
 router.get('/api/sidebar', function(req, res, next) {
  inf_a = 0;
