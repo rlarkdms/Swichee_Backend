@@ -19,6 +19,7 @@
 
 
 <b>[구현된 홈화면]</b>
+
 ![web_home](https://user-images.githubusercontent.com/31676033/104091185-2f41ba80-52bf-11eb-8120-f79e630cf744.png)
 
 
