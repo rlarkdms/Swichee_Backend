@@ -4,7 +4,9 @@
 ### swichee Frontend 레포 👉🏻 https://github.com/rovin0805/Swichee_Frontend.git
 ### EC2환경에서 제작 / RDS(MySQL) 사용 / 이미지 서버로 S3 사용 / Domain Route53 이용 <br> 백언어 node.js(express 이용) / 프로트언어 react,CSS / 협업 관리 git 
 
-
+### 😣21.01.01
+- CORS 에러 해결
+- 홈 API 구현(query 이용)  
 
 ### 🎅21.01.09
 - 댓글 완료
