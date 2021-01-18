@@ -31,6 +31,11 @@
 ### 🤣21.01.15
 - 블러 처리 완료
 
+### 🐱21.01.17
+- build S3로 배포->이후에 EC2을 이용하여 도메인 설정하고 배포 할 예정임
+
+<br>구현된 화면 👉http://swicheefront.s3-website-us-east-1.amazonaws.com
+
 <b>[구현된 홈화면]</b>
 
 ![web_home](https://user-images.githubusercontent.com/31676033/104091185-2f41ba80-52bf-11eb-8120-f79e630cf744.png)
