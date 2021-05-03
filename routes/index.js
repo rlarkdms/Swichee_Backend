@@ -18,9 +18,9 @@ res.json(data);
 
 var connection = 
 mysql.createConnection({
-  host : 'swichee.cj1j4colbxjn.us-east-1.rds.amazonaws.com',
-  user : 'swichee',
-  password : 'zxcvbnm12#',
+  host : endpoint,
+  user : user,
+  password : 비번,
   database : 'swichee'
 });
 connection.connect()
